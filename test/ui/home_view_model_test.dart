@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image_search/data/photo_api_repository.dart';
-import 'package:image_search/data/pixabay_api.dart';
 import 'package:image_search/model/photo.dart';
 import 'package:image_search/ui/home_view_model.dart';
 
@@ -11,14 +10,14 @@ void main() {
     await viewModel.fetch('apple');
     await viewModel.fetch('iphone');
 
-    final result = fakeJson.map((e) => Photo.fromJson(e)).toList();
+    final List<Photo> result = fakeJson.map((e) => Photo.fromJson(e)).toList();
+
     expect(
       viewModel.photoStream,
       emitsInAnyOrder([
         equals([]),
         equals(result),
         equals(result),
-        
       ]),
     );
   });
