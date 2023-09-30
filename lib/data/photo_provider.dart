@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:image_search/data/api.dart';
+import 'package:image_search/ui/home_view_model.dart';
 
 class PhotoProvider extends InheritedWidget {
-  final PixabatApi api;
+  final HomeViewModel viewModel;
+
   const PhotoProvider({
     Key? key,
-    required this.api,
+    required this.viewModel,
     required Widget child,
   }) : super(key: key, child: child);
 
@@ -18,6 +19,6 @@ class PhotoProvider extends InheritedWidget {
 
   @override
   bool updateShouldNotify(PhotoProvider oldWidget) {
-    throw oldWidget.api != api;
+    throw true;
   }
 }
