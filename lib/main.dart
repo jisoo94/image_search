@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:image_search/data/pixabay_api.dart';
-import 'package:image_search/data/photo_provider.dart';
-import 'package:image_search/ui/home_creen.dart';
+import 'package:image_search/ui/home_screen.dart';
 import 'package:image_search/ui/home_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,8 +20,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: PhotoProvider(
-          viewModel: HomeViewModel(PixabayApi()), child: const HomeScreen()),
+      home: Provider(
+          create: (_) => HomeViewModel(PixabayApi()), child: const HomeScreen()),
     );
   }
 }
+
+// https://pixabay.com/api/?key=39735462-7b5946eb6bf26485274c64c9b&q=iphone&image_type=photo
